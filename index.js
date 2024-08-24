@@ -10,7 +10,7 @@ const app = express();
 
 app.use(cors(
   {
-    origin: [`https://bookstore-frontend-rho.vercel.app/`],
+    origin: ["https://bookstore-frontend-alpha.vercel.app"],
     methods: ["POST", "GET"],
     credentials: true
   }
