@@ -8,19 +8,13 @@ import userRoute from "./route/user.route.js";
 
 const app = express();
 
-app.use(cors(
-  {
-    origin: ["https://bookstore-frontend-alpha.vercel.app"],
-    methods: ["POST", "GET"],
-    credentials: true
-  }
-));
+app.use(cors());
 app.use(express.json());
 
 dotenv.config();
 
 const PORT = process.env.PORT || 4000;
-const URI = process.env.MongoDBURI;
+// const URI = process.env.MongoDBURI;
 
 // connect to mongoDB
 
@@ -30,10 +24,6 @@ mongoose.connect(process.env.MONGO_URI, {
    })
    .then(() => console.log('MongoDB connected'))
    .catch(err => console.log(err));
-
-   app.get("/", (req, res) => {
-    res.json("Hello");
-   })
 
 // defining routes
 
