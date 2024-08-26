@@ -14,13 +14,19 @@ app.use(express.json());
 dotenv.config();
 
 const PORT = process.env.PORT || 4000;
-// const URI = process.env.MongoDBURI;
+const URI = process.env.MongoDBURI;
 
 // connect to mongoDB
 
-mongoose.connect(process.env.MONGO_URI)
-   .then(() => console.log('MongoDB connected'))
-   .catch(err => console.log(err));
+try {
+  mongoose.connect(URI,{
+   useNewUrlParser: true,
+   useUnifiedTopology: true
+  });
+  console.log("Connected to MongoDB");
+} catch (error) {
+  console.log("Error:", error);
+}
 
 // defining routes
 
